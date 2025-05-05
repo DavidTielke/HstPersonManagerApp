@@ -11,6 +11,11 @@ public class PersonManager
         _personRepository = new PersonRepository();
     }
 
+    public Person Copy(Person person)
+    {
+        return person;
+    }
+
     public IQueryable<Person> GetAllAdults()
     {
         return _personRepository
