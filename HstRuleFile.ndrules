@@ -231,5 +231,68 @@ let illegalNamespaces = a.ChildNamespaces.Where(ns => !allowedNamespaces.Any(ans
 where illegalNamespaces.Any()
 
 select new { a, illegalNamespaces }]]></Query>
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Management</Name>
+warnif count > 0 
+
+let pattern = "Management"
+
+let allowedClassPatterns = new string[]
+{
+ "Manager",
+}
+
+let patternAssemblies = JustMyCode.Assemblies.Where(a => a.SimpleName.EndsWith(pattern))
+
+from a in patternAssemblies
+
+let illegalTypes = a.ChildTypes.Where(ct => !ct.IsGeneratedByCompiler)
+                               .Where(ct => !allowedClassPatterns.Any(acp => ct.SimpleName.EndsWith(acp)))
+
+where illegalTypes.Any()
+
+select new { a, illegalTypes }]]></Query>
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Storing</Name>
+warnif count > 0 
+
+let pattern = "Storing"
+
+let allowedClassPatterns = new string[]
+{
+ "Reader",
+ "Repository",
+ "Parser"
+}
+
+let patternAssemblies = JustMyCode.Assemblies.Where(a => a.SimpleName.EndsWith(pattern))
+
+from a in patternAssemblies
+
+let illegalTypes = a.ChildTypes.Where(ct => !ct.IsGeneratedByCompiler)
+                               .Where(ct => !allowedClassPatterns.Any(acp => ct.SimpleName.EndsWith(acp)))
+
+where illegalTypes.Any()
+
+select new { a, illegalTypes }]]></Query>
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Client</Name>
+warnif count > 0 
+
+let pattern = "Client"
+
+let allowedClassPatterns = new string[]
+{
+ "Program",
+ "DisplayCommands"
+}
+
+let patternAssemblies = JustMyCode.Assemblies.Where(a => a.SimpleName.EndsWith(pattern))
+
+from a in patternAssemblies
+
+let illegalTypes = a.ChildTypes.Where(ct => !ct.IsGeneratedByCompiler)
+                               .Where(ct => !allowedClassPatterns.Any(acp => ct.SimpleName.EndsWith(acp)))
+
+where illegalTypes.Any()
+
+select new { a, illegalTypes }]]></Query>
   </Group>
 </Queries>
