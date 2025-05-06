@@ -12,9 +12,9 @@
     <Metric Name="# Blocker/Critical/High Issues" Unit="issues" />
     <Metric Name="# Issues" Unit="issues" />
     <Metric Name="# Suppressed Issues" Unit="issues" />
-    <Metric Name="# Rules" Unit="rules" />
-    <Metric Name="# Rules Violated" Unit="rules" />
-    <Metric Name="# Critical Rules Violated" Unit="rules" />
+    <Metric Name="# Rules" Unit="Rules" />
+    <Metric Name="# Rules Violated" Unit="Rules" />
+    <Metric Name="# Critical Rules Violated" Unit="Rules" />
     <Metric Name="# Quality Gates" Unit="quality gates" />
     <Metric Name="# Quality Gates Warn" Unit="quality gates" />
     <Metric Name="# Quality Gates Fail" Unit="quality gates" />
@@ -67,6 +67,9 @@
     <Metric Name="# Critical Rules" Unit="Rules" />
     <Metric Name="# Critical Rules Violations" Unit="Violations" />
   </MetricIndex>
+  <M N="11|12|62|63|13|64" >
+    <R D="5/6/2025 1:40:02 PM" L="v1.0" V="9|4|16|0|0|0" />
+  </M>
   <M N="0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64" >
     <R D="5/5/2025 3:49:14 PM" L="v1.0" V="0|0|0|0|0|0|3|3|0|6|0|166|4|0|12|0|0|1.6|0.023958|0.0125|1.92|0|38|38|0|7|134|312|19|0|0|1|1|7|6|7|0|0|0|16|0|16|4|4|2|3.43|11|5.43|0|0|3|1.17|1|0.083333|8|3|38|6|14|54|25|0|6|21|0" />
   </M>

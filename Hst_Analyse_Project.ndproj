@@ -56,7 +56,6 @@
   <PathVariables />
   <RuleFiles>
     <RuleFile Active="True" Path=".\HstRuleFile.ndrules" />
-    <RuleFile Active="True" Path="..\..\WS Polipol Feb 25\PersonManagerApp\Polipol Rules.ndrules" />
   </RuleFiles>
   <GraphFiles />
   <ProjectRules AreActive="False" QueryPersistenceKind="PersistOnlyQueryIdForUntouchedQueries" />

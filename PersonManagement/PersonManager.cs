@@ -1,6 +1,7 @@
-﻿using ConsoleClient.DataClasses;
+﻿using DavidTielke.PMA.CrossCutting.DataClasses;
+using DavidTielke.PMA.Data.DataStoring;
 
-namespace ConsoleClient;
+namespace DavidTielke.PMA.Logic.PersonManagement;
 
 public class PersonManager
 {

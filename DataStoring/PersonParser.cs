@@ -1,6 +1,6 @@
-﻿using ConsoleClient.DataClasses;
+﻿using DavidTielke.PMA.CrossCutting.DataClasses;
 
-namespace ConsoleClient;
+namespace DavidTielke.PMA.Data.DataStoring;
 
 public class PersonParser
 {

@@ -10,7 +10,7 @@ where t.NbLinesOfCode > 2
 select new { t, t.NbLinesOfCode, Severity = Severity.Blocker }
 
 // Regel 2: Methoden mit mehr als 20 LOC ODER mehr als 7 Cyclomatic Complexity]]></Query>
-  <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Zu komplexe Klassen</Name>
+  <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Zu komplexe Methoden</Name>
 warnif count > 0 
 
 from m in JustMyCode.Methods
@@ -24,8 +24,9 @@ failif count > 0 issues
 from i in Issues
 where i.Severity == Severity.Blocker
 select new { i }]]></Query>
-  <Group Name="Namensmuster" Active="True" ShownInReport="False">
-    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Musterkonsitenz</Name>
+  <Group Name="Klassen" Active="True" ShownInReport="False">
+    <Group Name="Namensmuster Klassen" Active="True" ShownInReport="False">
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Musterkonsitenz</Name>
 warnif count > 0 
 
 let namespatterns = new string[]
@@ -47,7 +48,7 @@ where !namespatterns.Any(np => t.SimpleName.EndsWith(np))
 
 select new { t, Severity = Severity.Blocker }
 ]]></Query>
-    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Manager</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Manager</Name>
 warnif count>0
 
 let pattern = "Manager"
@@ -79,7 +80,7 @@ where illegalMethods.Any()
 
 select new { t, illegalMethods, Severity = Severity.Blocker }
 ]]></Query>
-    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Repository</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Repository</Name>
 warnif count>0
 
 let pattern = "Repository"
@@ -110,7 +111,7 @@ where illegalMethods.Any()
 
 select new { t, illegalMethods, Severity = Severity.Blocker }
 ]]></Query>
-    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Parser</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Parser</Name>
 warnif count>0
 
 let pattern = "Parser"
@@ -138,7 +139,7 @@ where illegalMethods.Any()
 
 select new { t, illegalMethods, Severity = Severity.Blocker }
 ]]></Query>
-    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Manager</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Reader</Name>
 warnif count>0
 
 let pattern = "Reader"
@@ -166,7 +167,7 @@ where illegalMethods.Any()
 
 select new { t, illegalMethods, Severity = Severity.Blocker }
 ]]></Query>
-    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster DisplayCommands</Name>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster DisplayCommands</Name>
 warnif count>0
 
 let pattern = "DisplayCommands"
@@ -193,5 +194,42 @@ where illegalMethods.Any()
 
 select new { t, illegalMethods, Severity = Severity.Blocker }
 ]]></Query>
+    </Group>
+  </Group>
+  <Group Name="Komponenten" Active="True" ShownInReport="False">
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Alle Komponenten folgen Namensmustern</Name>
+warnif count > 0 
+
+let namepatterns = new string[]
+{
+  "Client",
+  "Management",
+  "Storing",
+  "DataClasses"
+}
+
+from a in JustMyCode.Assemblies
+
+where !namepatterns.Any(np => a.SimpleName.EndsWith(np))
+
+select new { a }]]></Query>
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namespaces korrekt</Name>
+warnif count > 0 
+
+let allowedNamespaces = new string[]
+{
+ "DavidTielke.PMA.UI.",
+ "DavidTielke.PMA.Logic.",
+ "DavidTielke.PMA.Data.",
+ "DavidTielke.PMA.CrossCutting.",
+}
+
+from a in JustMyCode.Assemblies
+
+let illegalNamespaces = a.ChildNamespaces.Where(ns => !allowedNamespaces.Any(ans => ns.FullName.StartsWith(ans)))
+
+where illegalNamespaces.Any()
+
+select new { a, illegalNamespaces }]]></Query>
   </Group>
 </Queries>
