@@ -2,7 +2,7 @@ using DavidTielke.PMA.CrossCutting.DataClasses;
 using DavidTielke.PMA.Logic.PersonManagement;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ServiceClient.Controllers
+namespace DavidTielke.PMA.UI.ServiceClient.Controllers
 {
     [ApiController]
     [Route("[controller]")]

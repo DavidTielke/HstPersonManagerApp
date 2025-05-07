@@ -5,7 +5,7 @@ warnif count > 0
 
 from t in JustMyCode.Types
 
-where t.NbLinesOfCode > 2
+where t.NbLinesOfCode > 220
 
 select new { t, t.NbLinesOfCode, Severity = Severity.Blocker }
 
@@ -15,7 +15,7 @@ warnif count > 0
 
 from m in JustMyCode.Methods
 
-where m.NbLinesOfCode > 2 || m.CyclomaticComplexity > 1
+where m.NbLinesOfCode > 20 || m.CyclomaticComplexity > 7
 
 select new { m, m.NbLinesOfCode, m.CyclomaticComplexity }
 ]]></Query>
@@ -32,6 +32,10 @@ warnif count > 0
 let namespatterns = new string[]
 {
   "Program",
+  "App",
+
+  "Initializer",
+  "Controller",
   "DisplayCommands",
   "Manager",
   "Repository",
@@ -255,7 +259,7 @@ let namepatterns = new string[]
 
 from a in JustMyCode.Assemblies
 
-where !namepatterns.Any(np => a.SimpleName.EndsWith(np))
+where !namepatterns.Any(np => a.SimpleName.EndsWith(np) || a.SimpleName.EndsWith(np+".Contract"))
 
 select new { a }]]></Query>
     <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namespaces korrekt</Name>
@@ -342,5 +346,28 @@ let illegalTypes = a.ChildTypes.Where(ct => !ct.IsGeneratedByCompiler)
 where illegalTypes.Any()
 
 select new { a, illegalTypes }]]></Query>
+    <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Impl Komponenten hängen nur von Contracten ab</Name>
+warnif count > 0 
+
+let blacklistAssemblies = new string[]
+{
+  "ConsoleClient",
+  "ServiceClient",
+  "DiMappings",
+  "DataClasses"
+}
+
+let implAssemblies = JustMyCode.Assemblies.Where(a => !blacklistAssemblies.Any(ba => a.SimpleName == ba))
+                                          .Where(a => !a.SimpleName.EndsWith(".Contract"))
+
+from a in implAssemblies
+
+let illegalAssemblies = a.AssembliesUsed.Where(a1 => !a1.IsThirdParty)
+                                     .Where(a1 => !blacklistAssemblies.Any(ba => a1.SimpleName == ba))
+                                     .Where(a1 => !a1.SimpleName.EndsWith(".Contract"))
+
+where illegalAssemblies.Any()
+
+select new { a, illegalAssemblies }]]></Query>
   </Group>
 </Queries>

@@ -1,7 +1,7 @@
 
 using DavidTielke.PMA.Infrastructure.DiMappings;
 
-namespace ServiceClient
+namespace DavidTielke.PMA.UI.ServiceClient
 {
     public class Program
     {
