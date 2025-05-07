@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiMappings\DiMappings.csproj" />
     <ProjectReference Include="..\PersonManagement\PersonManagement.csproj" />
   </ItemGroup>
 

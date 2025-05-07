@@ -2,7 +2,7 @@
 
 namespace DavidTielke.PMA.UI.ConsoleClient;
 
-public class PersonDisplayCommands
+public class PersonDisplayCommands : IPersonDisplayCommands
 {
     private readonly IPersonManager _manager;
 

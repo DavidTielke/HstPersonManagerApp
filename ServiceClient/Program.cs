@@ -1,4 +1,6 @@
 
+using DavidTielke.PMA.Infrastructure.DiMappings;
+
 namespace ServiceClient
 {
     public class Program
@@ -10,6 +12,9 @@ namespace ServiceClient
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            new ServiceCollectionInitializer().Initialize(builder.Services);
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

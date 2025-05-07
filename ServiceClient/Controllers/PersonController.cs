@@ -9,12 +9,13 @@ namespace ServiceClient.Controllers
     public class PersonController : ControllerBase
     {
         private readonly ILogger<PersonController> _logger;
-        private readonly PersonManager _manager;
+        private readonly IPersonManager _manager;
 
-        public PersonController(ILogger<PersonController> logger)
+        public PersonController(ILogger<PersonController> logger, 
+            IPersonManager manager)
         {
             _logger = logger;
-            //_manager = new PersonManager();
+            _manager = manager;
         }
 
         [Route("/Person/Adults")]
