@@ -4,11 +4,11 @@ namespace DavidTielke.PMA.UI.ConsoleClient;
 
 public class PersonDisplayCommands
 {
-    private readonly PersonManager _manager;
+    private readonly IPersonManager _manager;
 
-    public PersonDisplayCommands()
+    public PersonDisplayCommands(IPersonManager manager)
     {
-        _manager = new PersonManager();
+        _manager = manager;
     }
 
     public void DisplayAllAdults()

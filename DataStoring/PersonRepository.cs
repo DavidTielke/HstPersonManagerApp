@@ -3,15 +3,16 @@ using DavidTielke.PMA.Data.FileStoring;
 
 namespace DavidTielke.PMA.Data.DataStoring;
 
-public class PersonRepository
+public class PersonRepository : IPersonRepository
 {
-    private readonly FileReader _reader;
-    private readonly PersonParser _parser;
+    private readonly IFileReader _reader;
+    private readonly IPersonParser _parser;
 
-    public PersonRepository()
+    public PersonRepository(IFileReader reader, 
+        IPersonParser parser)
     {
-        _parser = new PersonParser();
-        _reader = new FileReader();
+        _reader = reader;
+        _parser = parser;
     }
 
     public IQueryable<Person> Query()

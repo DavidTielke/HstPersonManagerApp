@@ -14,7 +14,7 @@ namespace ServiceClient.Controllers
         public PersonController(ILogger<PersonController> logger)
         {
             _logger = logger;
-            _manager = new PersonManager();
+            //_manager = new PersonManager();
         }
 
         [Route("/Person/Adults")]
