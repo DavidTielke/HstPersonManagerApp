@@ -194,6 +194,50 @@ where illegalMethods.Any()
 
 select new { t, illegalMethods, Severity = Severity.Blocker }
 ]]></Query>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Alle Klassen-Abhängigkeiten sind entkoppelt</Name>
+warnif count > 0 
+// Alle Managementklassen
+// dürfen nur Abhängigkeiten auf andere Mangementklassen haben
+// die gegen Schnittstellen gehen
+
+let classBlackList = new string[]
+{
+ "Program",
+ "ServiceCollectionInitializer"
+}
+
+let managementClasses = JustMyCode.Types.Where(t => !t.IsGeneratedByCompiler && !t.IsInterface)
+                                        .Where(t => !t.ParentNamespace.FullName.Contains(".DataClasses"))
+                                        .Where(t => !classBlackList.Any(cbl => t.SimpleName == cbl))
+
+from t in managementClasses
+
+let illegalDependencies = t.TypesUsed.Where(tu => !tu.IsThirdParty && !tu.IsGeneratedByCompiler)
+                                     .Where(tu => !tu.ParentNamespace.FullName.Contains(".DataClasses"))
+                                     .Where(tu => !tu.IsInterface)
+
+where illegalDependencies.Any()
+
+select new { t, illegalDependencies, Severity = Severity.Blocker }
+]]></Query>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Keine statischen Klassen</Name>
+warnif count > 0 
+
+from t in JustMyCode.Types
+
+where t.IsStatic
+
+select new { t, Severity = Severity.Blocker }]]></Query>
+      <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Keine statischen Member</Name>
+warnif count > 0 
+
+from m in JustMyCode.Members
+
+where m.IsStatic
+   && !m.IsGeneratedByCompiler
+   && m.SimpleName != "Main"
+
+select new { m, Severity = Severity.Blocker }]]></Query>
     </Group>
   </Group>
   <Group Name="Komponenten" Active="True" ShownInReport="False">
@@ -205,7 +249,8 @@ let namepatterns = new string[]
   "Client",
   "Management",
   "Storing",
-  "DataClasses"
+  "DataClasses",
+  "DiMappings"
 }
 
 from a in JustMyCode.Assemblies
@@ -222,6 +267,7 @@ let allowedNamespaces = new string[]
  "DavidTielke.PMA.Logic.",
  "DavidTielke.PMA.Data.",
  "DavidTielke.PMA.CrossCutting.",
+ "DavidTielke.PMA.Infrastructure.",
 }
 
 from a in JustMyCode.Assemblies
@@ -281,7 +327,9 @@ let pattern = "Client"
 let allowedClassPatterns = new string[]
 {
  "Program",
- "DisplayCommands"
+ "DisplayCommands",
+ "App",
+ "Controller"
 }
 
 let patternAssemblies = JustMyCode.Assemblies.Where(a => a.SimpleName.EndsWith(pattern))

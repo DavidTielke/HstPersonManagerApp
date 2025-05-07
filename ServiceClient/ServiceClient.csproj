@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DiMappings\DiMappings.csproj" />
+    <ProjectReference Include="..\PersonManagement.Contract\PersonManagement.Contract.csproj" />
     <ProjectReference Include="..\PersonManagement\PersonManagement.csproj" />
   </ItemGroup>
 

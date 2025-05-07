@@ -4,13 +4,17 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <RootNamespace>DavidTielke.PMA.Data.DataStoring</RootNamespace>
+	  <RootNamespace>DavidTielke.PMA.Data.DataStoring.Contract</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DataClasses\" />
+    <Folder Include="Callbacks\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataClasses\DataClasses.csproj" />
-    <ProjectReference Include="..\DataStoring.Contract\DataStoring.Contract.csproj" />
-    <ProjectReference Include="..\FileStoring.Contract\FileStoring.Contract.csproj" />
   </ItemGroup>
 
 </Project>

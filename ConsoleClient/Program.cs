@@ -14,16 +14,15 @@ namespace DavidTielke.PMA.UI.ConsoleClient
 
             // UI Mappings
             serviceCollection.AddTransient<IPersonDisplayCommands, PersonDisplayCommands>();
+            serviceCollection.AddTransient<App>();
             
             // Restlichen Mappings
             new ServiceCollectionInitializer().Initialize(serviceCollection);
 
             var provider = serviceCollection.BuildServiceProvider();
 
-            var displayCommands = provider.GetRequiredService<IPersonDisplayCommands>();
-            
-            displayCommands.DisplayAllAdults();
-            displayCommands.DisplayAllChildren();
+            var app = provider.GetRequiredService<App>();
+            app.Run();
         }
     }
 }
