@@ -82,7 +82,7 @@ let illegalMethods = t.Methods.Where(m => !allowedMethods.Any(am => m.SimpleName
 
 where illegalMethods.Any()
 
-select new { t, illegalMethods, Severity = Severity.Blocker }
+select new { t, illegalMethods, Severity = Severity.Blocker, Debt = 10.ToMinutes().ToDebt() }
 ]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Repository</Name>
 warnif count>0
@@ -113,7 +113,7 @@ let illegalMethods = t.Methods.Where(m => !allowedMethods.Any(am => m.SimpleName
 
 where illegalMethods.Any()
 
-select new { t, illegalMethods, Severity = Severity.Blocker }
+select new { t, illegalMethods, Severity = Severity.Blocker, Debt = 10.ToMinutes().ToDebt() }
 ]]></Query>
       <Query Active="True" DisplayList="True" DisplayStat="False" DisplaySelectionView="False" IsCriticalRule="False"><![CDATA[// <Name>Namensmuster Parser</Name>
 warnif count>0

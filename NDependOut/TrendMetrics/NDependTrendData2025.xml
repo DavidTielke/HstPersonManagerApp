@@ -66,7 +66,16 @@
     <Metric Name="# Rules Violations" Unit="Violations" />
     <Metric Name="# Critical Rules" Unit="Rules" />
     <Metric Name="# Critical Rules Violations" Unit="Violations" />
+    <Metric Name="[IA0401] Percentage of backend pattern consistency" Unit="%" />
+    <Metric Name="[IA0401] Percentage of API pattern consistency" Unit="%" />
+    <Metric Name="[IA0401] Percentage of frontend pattern consistency" Unit="%" />
   </MetricIndex>
+  <M N="65|66|67|11|12|62|63|13|64" >
+    <R D="7/9/2025 4:24:12 PM" L="v1.0" V="NaN|NaN|NaN|98|12|54|1|0|0" />
+    <R D="7/2/2025 11:59:48 AM" L="v1.0" V="NaN|NaN|NaN|98|12|54|1|0|0" />
+    <R D="6/30/2025 12:20:20 PM" L="v1.0" V="NaN|NaN|NaN|98|8|49|1|0|0" />
+    <R D="5/9/2025 1:56:28 PM" L="v1.0" V="NaN|NaN|NaN|98|5|46|1|0|0" />
+  </M>
   <M N="11|12|62|63|13|64" >
     <R D="5/7/2025 11:22:34 AM" L="v1.0" V="13|6|28|0|0|0" />
     <R D="5/6/2025 1:40:02 PM" L="v1.0" V="9|4|16|0|0|0" />

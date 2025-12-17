@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataStoring.Contract\DataStoring.Contract.csproj" />
+    <ProjectReference Include="..\DataStoring\DataStoring.csproj" />
     <ProjectReference Include="..\PersonManagement.Contract\PersonManagement.Contract.csproj" />
   </ItemGroup>
 

@@ -1,0 +1,1 @@
+SChreibe eine Anwendung in C#, die Personen aus einer CSV Datei ausließt (Id,Name,Alter) und die Daten anschließend in der console getrennt nach Erwachsenen und Kindern ausgibt. Bitte teile den code in mehrere Klassen auf.

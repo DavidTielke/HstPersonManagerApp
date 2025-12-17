@@ -56,6 +56,8 @@
   <PathVariables />
   <RuleFiles>
     <RuleFile Active="True" Path=".\HstRuleFile.ndrules" />
+    <RuleFile Active="True" Path="..\..\..\..\Downloads\IL_ApplicationArchitecture.ndrules" />
+    <RuleFile Active="True" Path="..\..\..\..\Desktop\IL_ApplicationArchitecture.ndrules" />
   </RuleFiles>
   <GraphFiles />
   <ProjectRules AreActive="False" QueryPersistenceKind="PersistOnlyQueryIdForUntouchedQueries" />
