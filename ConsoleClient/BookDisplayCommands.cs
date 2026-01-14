@@ -1,4 +1,5 @@
 using DavidTielke.PMA.Logic.PersonManagement;
+using DavidTielke.PMA.Logic.KnowledgeManagement;
 
 namespace DavidTielke.PMA.UI.ConsoleClient;
 
@@ -21,7 +22,7 @@ public class BookDisplayCommands : IBookDisplayCommands
     public void DisplayAllGermanBooks()
     {
         var books = _manager.GetAllGermanBooks().ToList();
-        Console.WriteLine($"### Deutsche Bücher ({books.Count}) ###");
+        Console.WriteLine($"### Deutsche Bï¿½cher ({books.Count}) ###");
         books.ForEach(b => Console.WriteLine($"{b.Title} - {b.Author}"));
     }
 }

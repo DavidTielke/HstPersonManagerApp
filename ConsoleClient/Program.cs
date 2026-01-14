@@ -19,6 +19,9 @@ namespace DavidTielke.PMA.UI.ConsoleClient
             // Book UI
             serviceCollection.AddTransient<IBookDisplayCommands, BookDisplayCommands>();
 
+            // Car UI
+            serviceCollection.AddTransient<ICarDisplayCommands, CarDisplayCommands>();
+
             // Restlichen Mappings
             new ServiceCollectionInitializer().Initialize(serviceCollection);
 

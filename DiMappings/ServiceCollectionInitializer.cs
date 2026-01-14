@@ -19,6 +19,11 @@ namespace DavidTielke.PMA.Infrastructure.DiMappings
             services.AddTransient<IBookManager, BookManager>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IBookParser, BookParser>();
+
+            // Car services
+            services.AddTransient<ICarManager, CarManager>();
+            services.AddTransient<ICarRepository, CarRepository>();
+            services.AddTransient<ICarParser, CarParser>();
         }
     }
 }

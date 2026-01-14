@@ -15,10 +15,17 @@
   <ItemGroup>
     <ProjectReference Include="..\DiMappings\DiMappings.csproj" />
     <ProjectReference Include="..\PersonManagement.Contract\PersonManagement.Contract.csproj" />
+    <ProjectReference Include="..\KnowledgeManagement.Contract\KnowledgeManagement.Contract.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="data.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="books.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="cars.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
